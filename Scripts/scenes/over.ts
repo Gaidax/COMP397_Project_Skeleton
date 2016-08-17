@@ -1,7 +1,7 @@
 module scenes {
     export class Over extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
-        private _ocean:objects.Ocean;
+        private _back: objects.Backgorund;
         private _gameOverLabel: objects.Label;
         private _restartButton: objects.Button;
         private _finalScoreLabel: objects.Label;
@@ -19,15 +19,15 @@ module scenes {
          */
         public Start():void {
             // Add Ocean Background
-            this._ocean = new objects.Ocean("ocean");
-            this.addChild(this._ocean);
+            this. _back = new objects.Backgorund("over");
+            this.addChild(this._back);
 
             // Add Menu Label
             this._gameOverLabel = new objects.Label(
                 "GAME OVER", "60px","Dock51", "#FFFF00",
                 320, 180, true
                 );
-            this.addChild(this._gameOverLabel);
+            //this.addChild(this._gameOverLabel);
 
             // Add Score Label
             this._finalScoreLabel = new objects.Label(
@@ -38,7 +38,7 @@ module scenes {
 
             // add the start button
             this._restartButton = new objects.Button(
-                "restartButton", 320, 420, true
+                "backButton", 320, 500, true
             )
             this.addChild(this._restartButton);
 
@@ -47,11 +47,6 @@ module scenes {
 
             // add this scene to the global scene container
             core.stage.addChild(this);
-        }
-
-        public Update():void {
-            // scene updates happen here...
-            this._ocean.update();
         }
 
         // EVENT HANDLERS ++++++++++++++++

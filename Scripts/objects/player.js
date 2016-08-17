@@ -45,6 +45,7 @@ var objects;
         */
         Player.prototype._checkBounds = function () {
             if (core.keys) {
+                //console.log(core.keys);
                 if (core.keys[37]) {
                     this.x -= this.skelSpeed;
                 }
@@ -55,7 +56,7 @@ var objects;
                     this.x += this.skelSpeed;
                 }
                 if (core.keys[40]) {
-                    this.y += this.skelSpeed;
+                    this.y += 20;
                 }
             }
         };

@@ -22,7 +22,7 @@ var scenes;
             this._back = new objects.Backgorund("instr_back");
             this.addChild(this._back);
             // Add Instructins
-            this._instructionLabel = new objects.Label("PLAY TO WIN", "60px", "JFWilwod", "WHITE", 320, 240, true);
+            this._instructionLabel = new objects.Label("The game is played with keyboard.\n Use arrows (up, down, left, right)\n, to move, space to jump and ‘e’ to throw spear.\n You can also climb or descend ladders!\n", "20px", "JFWilwod", "YELLOW", 1200, 240, true);
             this.addChild(this._instructionLabel);
             // add the start button
             this._backButton = new objects.Button("backButton", 320, 420, true);

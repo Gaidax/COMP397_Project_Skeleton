@@ -32,6 +32,7 @@ var core;
         { id: "menu_spooky", src: "../../Assets/audio/mysterious_forest.mp3" },
         { id: "skeletone", src: "../../Assets/images/skeleton.png" },
         { id: "lvl_1_back", src: "../../Assets/images/lvl_1_back.png" },
+        { id: "over", src: "../../Assets/images/over.jpg" },
     ];
     /**
      * This method preloads assets for the game
@@ -54,7 +55,7 @@ var core;
     function init() {
         core.stage = new createjs.Stage(canvas); // instatiate the stage container
         core.stage.enableMouseOver(20);
-        createjs.Ticker.framerate = 60;
+        createjs.Ticker.framerate = 40;
         createjs.Ticker.on("tick", gameLoop); // create an event listener for the tick event
         var menuAtlData = {
             "images": [
@@ -77,16 +78,20 @@ var core;
             ],
             "frames": [
                 [210, 718, 30, 49, 0, 0, 0],
+                [271, 718, 30, 49, 0, 0, 0],
+                [329, 718, 30, 49, 0, 0, 0],
+                [390, 718, 30, 49, 0, 0, 0]
             ],
             "animations": {
-                "player_move": [0],
+                "player_stay": [0],
+                "player_move": [0, 1, 2, 3, true, 0.25],
             }
         };
         // added textureAtlas
         core.menuAtlas = new createjs.SpriteSheet(menuAtlData);
         core.playerAtlas = new createjs.SpriteSheet(playerAtlData);
         // setup the default scene
-        core.scene = config.Scene.MENU;
+        core.scene = config.Scene.OVER;
         changeScene();
     }
     /**

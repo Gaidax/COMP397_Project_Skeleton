@@ -21,6 +21,8 @@ namespace core {
     export let menuAtlas: createjs.SpriteSheet;
     export let playerAtlas: createjs.SpriteSheet;
 
+    export let curr_player: objects.Player;
+
     // make a reference to the canvas element
     let canvas: HTMLElement = document.getElementById("canvas");
     // create a reference to a stage container
@@ -52,6 +54,7 @@ namespace core {
         { id: "menu_spooky", src: "../../Assets/audio/mysterious_forest.mp3" },
         { id: "skeletone", src: "../../Assets/images/skeleton.png" },
         { id: "lvl_1_back", src: "../../Assets/images/lvl_1_back.png" },
+        { id: "over", src: "../../Assets/images/over.jpg" },
     ];
 
 
@@ -79,7 +82,7 @@ namespace core {
     function init(): void {
         stage = new createjs.Stage(canvas); // instatiate the stage container
         stage.enableMouseOver(20);
-        createjs.Ticker.framerate = 60;
+        createjs.Ticker.framerate = 40;
         createjs.Ticker.on("tick", gameLoop); // create an event listener for the tick event
 
         let menuAtlData = {
@@ -104,9 +107,13 @@ namespace core {
             ],
             "frames": [
                 [210, 718, 30, 49, 0, 0, 0],
+                [271,718, 30, 49, 0, 0, 0],
+                [329, 718, 30, 49, 0, 0, 0],
+                [390, 718, 30, 49, 0, 0, 0]
             ],
             "animations": {
-                "player_move": [0],          
+                "player_stay":[0],
+                "player_move": [0,1,2,3],          
             }
         };
 
@@ -115,7 +122,7 @@ namespace core {
         playerAtlas = new createjs.SpriteSheet(playerAtlData);
 
         // setup the default scene
-        scene = config.Scene.MENU;
+        scene = config.Scene.OVER;
         changeScene();
     }
 

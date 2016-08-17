@@ -44,9 +44,11 @@ module objects {
          */
         private _checkBounds():void {
             if(core.keys) {
+                //console.log(core.keys);
+                
             if(core.keys[37]) {
                 this.x -=this.skelSpeed;
-            }
+            } 
             if(core.keys[38]) {
                 this.y -=this.skelSpeed;
             }
@@ -54,7 +56,7 @@ module objects {
                 this.x +=this.skelSpeed;
             }
             if(core.keys[40]) {
-                this.y +=this.skelSpeed;
+                this.y +=20;
             }
         }
         }
@@ -86,6 +88,7 @@ module objects {
             this.position = new Vector2(this.x, this.y);
             //this.x = core.stage.mouseX;
             this._checkBounds();
+
         }
     }
 }

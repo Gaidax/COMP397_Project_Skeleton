@@ -36,13 +36,23 @@ module scenes {
             //this.addChild(this._bonus);
 
 
-            this._player = new objects.Player("player_move");
+            this._player = new objects.Player("player_stay");
             this._player.skelSpeed = 10;
             this.addChild(this._player);
+            core.curr_player = this._player;
             this._backTrack = createjs.Sound.play("back_music");
             this._backTrack.loop = -1;
-            document.onkeyup= this.onkeyup;
-            document.onkeydown = this.onkeydown;
+            var self = this;
+            document.addEventListener("keyup", function (event){
+                delete core.keys[event.keyCode];
+                core.curr_player.gotoAndStop("player_stay");
+            });
+            //                
+            document.addEventListener("keydown", function (event){
+                core.curr_player.gotoAndPlay("player_move");
+                core.keys[event.keyCode] = true;
+                
+            });
             //createjs.Ticker.addEventListener('tick', this.handleKeyDown);
             //this._bad_guys = new Array<objects.Enemies>();
             //for (let count = 0; count < 3; count++) {
@@ -70,7 +80,6 @@ module scenes {
 
         private onkeyup(event){
             delete core.keys[event.keyCode];
-                   
         }
 
         public Update(): void {

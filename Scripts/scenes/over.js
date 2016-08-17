@@ -19,25 +19,21 @@ var scenes;
          */
         Over.prototype.Start = function () {
             // Add Ocean Background
-            this._ocean = new objects.Ocean("ocean");
-            this.addChild(this._ocean);
+            this._back = new objects.Backgorund("over");
+            this.addChild(this._back);
             // Add Menu Label
             this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Dock51", "#FFFF00", 320, 180, true);
-            this.addChild(this._gameOverLabel);
+            //this.addChild(this._gameOverLabel);
             // Add Score Label
             this._finalScoreLabel = new objects.Label("SCORE: " + core.score, "60px", "Dock51", "#FFFF00", 320, 240, true);
             this.addChild(this._finalScoreLabel);
             // add the start button
-            this._restartButton = new objects.Button("restartButton", 320, 420, true);
+            this._restartButton = new objects.Button("backButton", 320, 500, true);
             this.addChild(this._restartButton);
             // Start button event listener
             this._restartButton.on("click", this._restartButtonClick, this);
             // add this scene to the global scene container
             core.stage.addChild(this);
-        };
-        Over.prototype.Update = function () {
-            // scene updates happen here...
-            this._ocean.update();
         };
         // EVENT HANDLERS ++++++++++++++++
         Over.prototype._restartButtonClick = function (event) {
